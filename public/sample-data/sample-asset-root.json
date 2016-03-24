@@ -1,0 +1,42 @@
+[
+    {
+        "uri": "parent",
+        "classification": "parent",
+        "description": "NAM",
+        "assetId": "NAM",
+        "parent": null,
+        "isOpenable": true
+    },
+    {
+        "uri": "parent1",
+        "classification": "parent1",
+        "description": "EMEA",
+        "assetId": "EMEA",
+        "parent": null,
+        "isOpenable": true
+    },
+    {
+        "uri": "parent2",
+        "classification": "parent2",
+        "description": "LATAM",
+        "assetId": "LATAM",
+        "parent": null,
+        "isOpenable": true
+    },
+    {
+        "uri": "parent3",
+        "classification": "parent3",
+        "description": "CHINA",
+        "assetId": "CHINA",
+        "parent": null,
+        "isOpenable": true
+    },
+    {
+        "uri": "parent4",
+        "classification": "parent4",
+        "description": "APAC",
+        "assetId": "APAC",
+        "parent": null,
+        "isOpenable": true
+    }
+]

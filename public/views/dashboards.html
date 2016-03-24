@@ -1,0 +1,35 @@
+   <link rel="import" href="../bower_components/px-card/px-card-dashboard.html"/>
+<style>
+	.head style-scope px-context-browser{
+	display: none !important;
+	}
+	    .caps.px-context-browser{
+    text-transform: upperlowercase !important;
+}
+</style>
+
+<!--    
+Getting json object from backend on ajax call
+ <core-ajax id="ajax_get_location"
+            auto
+            url="project_location.json"
+            params='{"idProject":"{{idProject}}"}'
+            on-core-response="{{locationLoaded}}"
+            handleAs="json"
+            response = "{{project_location}}">
+  </core-ajax> -->
+
+  <dom-module id="px-context-browser1">
+  <px-context-browser id="123"
+        initial-contexts='{{initialContexts}}'
+        handlers="ngScope:handlers"
+        style="padding-left: 20px;"
+        opened-item-name="Select Pole"
+        selected-Item-Id="value"
+        >
+</px-context-browser>
+<px-dashboard selected-deck="{{selectedDeckUrl}}" context="{{context}}"></px-dashboard>
+</dom-module>
+
+<px-card-dashboard id="123"></px-card-dashboard>
+

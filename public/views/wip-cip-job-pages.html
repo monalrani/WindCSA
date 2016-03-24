@@ -1,0 +1,329 @@
+
+ <style>
+      .tab-page {
+        margin: 5px;
+      }
+      
+      iron-icon{
+      width: 19px !important;
+      }
+      .resultTable.u-p-.px-data-table{
+		  padding: -1.333333rem !important;
+	  }
+      </style>
+
+
+<dom-module id="ter-form-card">
+<template style="background-color:white;">
+<px-card>
+<section>
+
+<px-tab-set id="tab-set" selected="{{selected}}">
+<px-tab>WIP Jobs</px-tab>
+<px-tab>Completed Jobs</px-tab>
+</px-tab-set>
+
+<px-tab-pages selected="{{selected}}">
+<div>
+<section>
+<p style="margin-top: 3px;margin-bottom: 0px;text-align: center;font-size:20px;">Work In Progress Jobs</p>
+<px-data-table id="resultTable"  filterable selectable striped table-data="{{json}}">
+<px-data-table-column name="Action"
+type="html"
+label="Action"
+sortable
+searchable
+required
+searchplaceholder="Type to filter date"
+default=""
+filter-function-name="filterWholeWord"
+sort-function-name="sortColumn">
+</px-data-table-column>
+
+<px-data-table-column name="jobNumber"
+type="html"
+label="Job Number"
+sortable
+searchable
+required
+searchplaceholder="Type to filter date"
+default=""
+filter-function-name="filterWholeWord"
+sort-function-name="sortColumn">
+</px-data-table-column>
+ 
+<px-data-table-column name="Component"
+type="html"
+label="Component"
+sortable
+searchable
+required
+searchplaceholder="Type to filter date"
+default=""
+filter-function-name="filterWholeWord"
+sort-function-name="sortColumn">
+</px-data-table-column>
+
+<px-data-table-column name="Customer"
+type="html"
+label="Customer"
+sortable
+searchable
+required
+searchplaceholder="Type to filter date"
+default=""
+filter-function-name="filterWholeWord"
+sort-function-name="sortColumn">
+</px-data-table-column>
+ 
+<px-data-table-column name="dateReceived"
+type="html"
+label="DateReceived"
+sortable
+searchable
+required
+searchplaceholder="Type to filter date"
+default=""
+filter-function-name="filterWholeWord"
+sort-function-name="sortColumn">
+</px-data-table-column>
+
+<px-data-table-column name="conditionReportDate"
+type="html"
+label="Condition Report Date"
+sortable
+searchable
+required
+searchplaceholder="Type to filter date"
+default=""
+filter-function-name="filterWholeWord"
+sort-function-name="sortColumn">
+</px-data-table-column>
+
+<px-data-table-column name="dateShipped"
+type="html"
+label="DateShipped"
+sortable
+searchable
+required
+searchplaceholder="Type to filter date"
+default=""
+filter-function-name="filterWholeWord"
+sort-function-name="sortColumn">
+</px-data-table-column>
+
+<px-data-table-column name="finalReportSubmission"
+type="html"
+label="Final Report Submission"
+sortable
+searchable
+required
+searchplaceholder="Type to filter date"
+default=""
+filter-function-name="filterWholeWord"
+sort-function-name="sortColumn">
+</px-data-table-column>
+</px-data-table>
+</section>	
+</div>
+
+<div>
+<section>
+
+<p style="margin-top: 3px;margin-bottom: 0px;text-align: center;font-size:20px;">Completed Jobs</p>
+<px-data-table id="resultTable"  filterable selectable striped table-data="{{json1}}">
+<px-data-table-column name="Action"
+type="html"
+label="Action"
+sortable
+searchable
+required
+searchplaceholder="Type to filter date"
+default=""
+filter-function-name="filterWholeWord"
+sort-function-name="sortColumn">
+</px-data-table-column>
+
+<px-data-table-column name="jobNumber"
+type="html"
+label="Job Number"
+sortable
+searchable
+required
+searchplaceholder="Type to filter date"
+default=""
+filter-function-name="filterWholeWord"
+sort-function-name="sortColumn">
+</px-data-table-column>
+
+<px-data-table-column name="Component"
+type="html"
+label="Component"
+sortable
+searchable
+required
+searchplaceholder="Type to filter date"
+default=""
+filter-function-name="filterWholeWord"
+sort-function-name="sortColumn">
+</px-data-table-column>
+ 
+<px-data-table-column name="Customer"
+type="html"
+label="Customer"
+sortable
+searchable
+required
+searchplaceholder="Type to filter date"
+default=""
+filter-function-name="filterWholeWord"
+sort-function-name="sortColumn">
+</px-data-table-column>
+ 
+<px-data-table-column name="dateReceived"
+type="html"
+label="DateReceived"
+sortable
+searchable
+required
+searchplaceholder="Type to filter date"
+default=""
+filter-function-name="filterWholeWord"
+sort-function-name="sortColumn">
+</px-data-table-column>
+
+<px-data-table-column name="conditionReportDate"
+type="html"
+label="Condition Report Date"
+sortable
+searchable
+required
+searchplaceholder="Type to filter date"
+default=""
+filter-function-name="filterWholeWord"
+sort-function-name="sortColumn">
+</px-data-table-column>
+
+<px-data-table-column name="dateShipped"
+type="html"
+label="Date Shipped"
+sortable
+searchable
+required
+searchplaceholder="Type to filter date"
+default=""
+filter-function-name="filterWholeWord"
+sort-function-name="sortColumn">
+</px-data-table-column>
+
+<px-data-table-column name="finalReportSubmission"
+type="html"
+label="Final Report Date"
+sortable
+searchable
+required
+searchplaceholder="Type to filter date"
+default=""
+filter-function-name="filterWholeWord"
+sort-function-name="sortColumn">
+</px-data-table-column>
+</px-data-table>
+</section>
+</div>
+</px-tab-pages>
+</section>
+</px-card>
+</template>
+
+  <script>
+    Polymer({
+      is: 'ter-form-card',
+      behaviors: [px.card],
+      properties: {
+      selected: {
+      type: String,
+      reflect: true
+        }
+      },
+      ready: function() {
+        var tabs = document.querySelector('#tab-set');
+        var QueryString= GetQueryStringByParameter('job'); 
+        if(QueryString == "w"){
+        	this.selected = 0;
+        }else if(QueryString == "c"){
+        	this.selected = 1;
+        }else{
+            this.selected = 0;
+
+        }
+        
+        function GetQueryStringByParameter(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+        
+        this.cbrResultsService();
+      },
+      
+      
+  	cbrResultsService: function() {
+		var resp = this;
+		var serviceUrl = "";
+		var json = [{"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\" 10\"height= \"10\"></iron-icon></a><a href=\"javascript:;\"onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">00078</a>', "Component":"Stage 1 Nozzle","Customer":"SAN DIEGO GAS & ELECTRIC CO", "dateReceived":"10-Mar-2014","conditionReportDate":"09-Jun-2014","dateShipped":"05-Dec-2014","finalReportSubmission":"25-Dec-2014","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">00084</a>', "Component":"Stage 1 Nozzle","Customer":"CLP HOLDINGS LIMITED", "dateReceived":"18-Jul-2014","conditionReportDate":"18-Aug-2014","dateShipped":"12-Oct-2014","finalReportSubmission":"13-Dec-2014","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">0032</a>', "Component":"Stage 2 Turbine Blade","Customer":"Northern States Power Company","dateReceived":"21-Jun-2012","conditionReportDate":"05-Jul-2012","dateShipped":"06-Sep-2014","finalReportSubmission":"17-Oct-2014","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">0061</a>', "Component":"Stage 1 Turbine Blade","Customer":"Sample", "dateReceived":"17-Jul-2012","conditionReportDate":"23-Aug-2012","dateShipped":"07-Nov-2014","finalReportSubmission":"22-Dec-2014","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">010503</a>',"Component":"Fuel Nozzle","Customer":"GENERAL ELECTRIC INTERNATIONAL INC", "dateReceived":"02-Sep-2013","conditionReportDate":"06-Oct-2013","dateShipped":"12-Sep-2014","finalReportSubmission":"05-Nov-2014","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">01158</a>', "Component":"Stage 1 Turbine Blade","Customer":"SAN DIEGO GAS & ELECTRIC CO", "dateReceived":"12-Oct-2014","conditionReportDate":"08-Nov-2014","dateShipped":"18-Dec-2014","finalReportSubmission":"28-Dec-2014","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">1003</a>', "Component":"Bucket","Customer":"GEORGIA POWER COMPANY", "dateReceived":"22-Dec-2014","conditionReportDate":"02-Jan-2014","dateShipped":"25-Mar-2014","finalReportSubmission":"12-Apr-2014","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">10054</a>', "Component":"Stage 1 Turbine Blade","Customer":"AL RUSAIL POWER CO", "dateReceived":"02-Nov-2014","conditionReportDate":"10-Dec-2014","dateShipped":"02-Feb-2014","finalReportSubmission":"21-Mar-2014","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">10079</a>', "Component":"Field","Customer":"GENERAL ELECTRIC INTERNATIONAL INC", "dateReceived":"11-Nov-2015","conditionReportDate":"15-Dec-2015","dateShipped":"09-Feb-2014","finalReportSubmission":"18-Apr-2014","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">10108</a>', "Component":"Stage 3 Shroud","Customer":"THE SOUTHERN COMPANY", "dateReceived":"22-Jan-2012","conditionReportDate":"11-Feb-2012","dateShipped":"26-Apr-2014","finalReportSubmission":"19-May-2014","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">10126</a>', "Component":"Field","Customer":"GEII-SG CONTRACTUAL SERVICES", "dateReceived":"16-Apr-2013","conditionReportDate":"27-May-2013","dateShipped":"11-Jul-2014","finalReportSubmission":"20-Sep-2014","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">10151</a>', "Component":"Stage 1 Turbine Blade","Customer":"GENON ENERGY HOLDINGS, INC", "dateReceived":"18-Aug-2011","conditionReportDate":"31-Sep-2011","dateShipped":"22-Oct-2014","finalReportSubmission":"30-Nov-2014","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">1016927</a>',"Component":"Diaphragm / Nozzle","Customer":"AL RUSAIL POWER CO", "dateReceived":"19-Sep-2011","conditionReportDate":"04-Oct-2011","dateShipped":"12-Dec-2014","finalReportSubmission":"10-Jan-2015","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">10184</a>', "Component":"Valve","Customer":"GEORGIA POWER COMPANY", "dateReceived":"10-Oct-2012","conditionReportDate":"07-Nov-2012","dateShipped":"10-Jan-2014","finalReportSubmission":"27-Mar-2014","colorCode":"#005CB9"}];
+
+		
+		            var json1 = [{"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\" 10\"height= \"10\"></iron-icon></a><a href=\"javascript:;\"onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">40100</a>', "Component":"Stage 1 Shroud", "Customer":"ENDESA SA", "dateReceived":"31-Jul-2015 ", "conditionReportDate":"01-Sep-2015", "dateShipped":"05-Dec-2015","finalReportSubmission":"18-Jan-2016","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">42557</a>', "Component":"Stage 1 Nozzle", "Customer":"SEMBCORP INDUSTRIES LTD", "dateReceived":"27-Oct-2015", "conditionReportDate":"10-Nov-2015", "dateShipped":"12-Dec-2015","finalReportSubmission":"18-Jan-2016","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">42729</a>', "Component":"Stage 1 Turbine Blade", "Customer":"HITACHI ZOSEN CORPORATION", "dateReceived":"24-Jun-2015 ", "conditionReportDate":"30-Jun-2015", "dateShipped":"06-Jul-2015","finalReportSubmission":"18-Jan-2016","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">43996</a>', "Component":"Liner", "Customer":"MASS GLOBAL INVESTMENT CO", "dateReceived":"05-Aug-2015", "conditionReportDate":"03-Sep-2015", "dateShipped":"07-Sep-2015","finalReportSubmission":"18-Jan-2016","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">47035</a>', "Component":"Fuel Nozzle", "Customer":"SAUDI ARABIAN OIL COMPANY", "dateReceived":"10-Nov-2015", "conditionReportDate":"02-Dec-2015", "dateShipped":"27-Dec-2015","finalReportSubmission":"18-Jan-2016","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">47379</a>', "Component":"Fuel Nozzle", "Customer":"OMAN LNG LLC", "dateReceived":"12-Nov-2015", "conditionReportDate":"12-Dec-2015", "dateShipped":"28-Dec-2015","finalReportSubmission":"18-Jan-2016","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">48174</a>', "Component":"Fuel Nozzle", "Customer":"SAUDI ELECTRICITY COMPANY", "dateReceived":"22-Dec-2015", "conditionReportDate":"17-Jan-2016", "dateShipped":"25-Mar-2016","finalReportSubmission":"18-Jan-2016","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">39068</a>', "Component":"Liner", "Customer":"AL KAMIL CONSTRUCTION & SERVICES L L C", "dateReceived":"22-Dec-2015", "conditionReportDate":"30-Sep-2015", "dateShipped":"02-Oct-2015","finalReportSubmission":"17-Jan-2016","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">44340</a>', "Component":"Transition Piece", "Customer":"ENDESA SA", "dateReceived":"09-Sep-2015", "conditionReportDate":" 07-Oct-2015", "dateShipped":"09-Nov-2015","finalReportSubmission":"17-Jan-2016","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">44361</a>', "Component":"Stage 1 Nozzle", "Customer":"SARAS SPA", "dateReceived":"25-Nov-2015", "conditionReportDate":"13-Jan-2016", "dateShipped":"26-Apr-2016","finalReportSubmission":"17-Jan-2016","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">45500</a>', "Component":"Fuel Nozzle", "Customer":"KARACHAGANAK PETROLEUM OPERATING BV BRANCH","dateReceived":"03-Oct-2015","conditionReportDate":"22-Nov-2015", "dateShipped":"11-Dec-2015","finalReportSubmission":"17-Jan-2016","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">46772</a>', "Component":"Bull Horn Bracket", "Customer":"EGYPTIAN ELECTRICITY HOLDING COMPANY", "dateReceived":"08-Nov-2015", "conditionReportDate":"26-Nov-2015", "dateShipped":"22-Dec-2015","finalReportSubmission":"17-Jan-2016","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">46773</a>', "Component":"Bull Horn Bracket", "Customer":"EGYPTIAN ELECTRICITY HOLDING COMPANY", "dateReceived":"08-Nov-2015", "conditionReportDate":"26-Nov-2015", "dateShipped":"12-Dec-2015","finalReportSubmission":"17-Jan-2016","colorCode":"#005CB9"},
+		            {"Action":"<a href=\"javascript:;\" onclick=\"jobCopy()\"><iron-icon icon=\"icons:content-copy\" style=\"color: green;\" width=\"10\" height=\"10\"></iron-icon></a><a href=\"javascript:;\" onclick=\"jobDelete()\"><iron-icon icon=\"icons:delete\" style=\"color: lightsalmon;\" width=\"10\" height=\"10\"></iron-icon></a>","jobNumber":'<a href="#">46835</a>', "Component":"Bull Horn Bracket", "Customer":"EGYPTIAN ELECTRICITY HOLDING COMPANY", "dateReceived":"08-Nov-2015", "conditionReportDate":"26-Nov-2015", "dateShipped":"10-Jan-2016","finalReportSubmission":"17-Jan-2016","colorCode":"#005CB9"}];
+
+		            var self = this;
+		            this.getData(serviceUrl).then(function(data) {
+		            self.data= data.response;
+		            self.json = json;
+		            self.json1 = json1;
+
+			});
+			}
+    });
+    
+    function jobDelete(){
+    	alert('Job Deleted');
+    }
+    
+    function jobCopy(){
+    	alert('Job cloned');
+    }
+    
+    
+  </script>
+</dom-module>
+
+<body>
+<ter-form-card id="ter-form-card"></ter-form-card>
+</body>

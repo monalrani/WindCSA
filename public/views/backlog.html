@@ -1,0 +1,585 @@
+<style>
+google-chart {
+      height: 300px;
+      width: 500px;
+    }
+    .table3{
+    padding-left: 83px;
+    color:#005cb9;
+    }
+    .table4{
+    padding-left: 34px;
+    color:#005cb9;
+    }
+    #highcharts-legend-item{
+    color: #005cb9 !important;	
+    }
+    .caps.px-card-header{
+    text-transform: capitalize !important;
+    font-family:GE Inspira;
+    padding-left:86px;
+    font-size: 16px;
+    }
+    h3.px-card-header{
+    border-bottom:0px solid #7c7c84;
+    color:#005cb9;
+    }
+     #chartdiv div > div > div > svg > defs + rect + g > text {
+    font-family: GE Inspira !important;
+    font-size: 16px !important;
+    fill:#005cb9 !important;
+    } 
+  #chartdiv div > div > div > svg > defs + rect + g + g > rect + g > rect + g > text {
+	y: 94.2 !important;
+	}
+	#chartdiv div > div > div > svg > defs + rect + g + g > rect + g > rect + g + circle {
+		cy:91 !important !important;	
+	}
+	#chartdiv div > div > div > svg > defs + rect + g + g > rect + g {
+		cy:200 !important;	
+	} 
+	.dropdown-menu.px-deck-selector {
+    position: absolute !important;
+    margin-left: 239px;
+}
+	.epsilon.px-deck-selector {
+    font-size: 1rem;
+    line-height: 0;
+    font-family: GE Inspira;
+}.dropdown-text.px-deck-selector {
+    cursor: pointer;
+    font-family: GE Inspira;
+    float: right;
+    margin-top: 0px;
+    margin-right: 546px;
+}
+.dropdown-menu.px-deck-selector1 {
+    position: absolute !important;
+    margin-left: 405px;
+}
+	.epsilon.px-deck-selector1 {
+    font-size: 1rem;
+    line-height: 0;
+    font-family: GE Inspira;
+}
+.dropdown-text.px-deck-selector1 {
+    cursor: pointer;
+    font-family: GE Inspira;
+    position: relative;
+    margin-right: 415px;
+    margin-top:-19px;
+    float: right;
+}
+</style>
+
+<px-card-backlogs id="1" style="margin-right: 492px;padding-bottom: 18px;padding-top: 11px;padding-left: 3px;padding-right: 3px;background-color: #005cb9;color: white;">
+      <label style="font-family:GE Inspira;font-weight: bold;font-size: 23px;padding-left:15px;">Backlog:$</label> &nbsp&nbsp56457568 
+    </px-card-backlogs>
+    <px-card-backlogs id="2" style="margin-left:477px;padding-bottom: 18px;padding-top: 12px;padding-left: 5px;padding-right: 4px;margin-top:-64px;background-color: #005cb9;color: white;">
+      <label style="font-family:GE Inspira;font-weight: bold;font-size: 22px;padding-left:50px;">Major CM% Region:</label> &nbsp&nbspCHINA 
+    </px-card-backlogs>
+     <px-card-backlogs id="3" style="margin-left:513px;padding-bottom: 2px;padding-top: 16px;padding-left: 5px;padding-right: 4px;margin-top:3px">
+      <div id="selection-demo">
+    <google-chart
+      type="pie"
+      id="selection-chart"
+      options='{"title": "Region Statistics"}'
+      cols='[ {"label": "Regions", "type": "string"},{"label": "Data", "type": "number"} ]'
+      rows='[ ["LATAM", 144],["EMEA", 469],["CHINA", 87],["APAC", 79],["NAM", 446] ]'>
+    </google-chart>
+    	<div id="container2"
+			style="width: 330px; height: 200px; margin: 0;margin-left: 69px;">
+			<table border="1px solid black" cellpadding="1px" style="border-collapse: collapse;">
+			<tr align="center">
+			<td></td>
+			<td><font color="#002699">#Units</font></td>
+			<td><font color="#002699">#Units</font></td>
+			<td><font color="#002699">#Units</font></td>
+			<td><font color="#002699">BL Rev</font></td>
+			<td><font color="#002699">VPY</font></td>
+			<td></td>
+			</tr>
+			<tr align="center">
+			<td></td>
+			<td><font color="#002699">OSA</font></td>
+			<td><font color="#002699">FSA</font></td>
+			<td><font color="#002699">OSA+FSA</font></td>
+			<td><font color="#002699">(Total)</font></td>
+			<td><font color="#002699">(BLREV)</font></td>
+			<td><font color="#002699">%CM</font></td>
+			</tr>
+			<tr align="center">
+			<td><font color="#3573c5">NAM</font></td>
+			<td><font color="#3573c5">4,337</font></td>
+			<td><font color="#3573c5">1,335</font></td>
+			<td><font color="#3573c5">5,672</font></td>
+			<td><font color="#3573c5">$788</font></td>
+			<td><font color="#3573c5">$99</font></td>
+			<td><font color="#3573c5">35%</font></td>
+			</tr>
+			<tr align="center">
+			<td><font color="#009933">EMEA</font></td>
+			<td><font color="#009933">1,950</font></td>
+			<td><font color="#009933">1,215</font></td>
+			<td><font color="#009933">3,165</font></td>
+			<td><font color="#009933">$556</font></td>
+			<td><font color="#009933">($23)</font></td>
+			<td><font color="#009933">35%</font></td>
+			</tr>
+			<tr align="center">
+			<td><font color="#b32d00">LATAM</font></td>
+			<td><font color="#b32d00">889</font></td>
+			<td><font color="#b32d00">165</font></td>
+			<td><font color="#b32d00">1,054</font></td>
+			<td><font color="#b32d00">$178</font></td>
+			<td><font color="#b32d00">($73)</font></td>
+			<td><font color="#b32d00">35%</font></td>
+			</tr>
+			<tr align="center">
+			<td><font color="#660066">CHINA</font></td>
+			<td><font color="#660066">282</font></td>
+			<td><font color="#660066">0</font></td>
+			<td><font color="#660066">282</font></td>
+			<td><font color="#660066">$7</font></td>
+			<td><font color="#660066">$2</font></td>
+			<td><font color="#660066">46%</font></td>
+			</tr>
+			<tr align="center">
+			<td><font color="#3693f8">APAC</font></td>
+			<td><font color="#3693f8">365</font></td>
+			<td><font color="#3693f8">160</font></td>
+			<td><font color="#3693f8">525</font></td>
+			<td><font color="#3693f8">$117</font></td>
+			<td><font color="#3693f8">($1)</font></td>
+			<td><font color="#3693f8">33%</font></td>
+			</tr>
+			</table>
+			</div>
+
+  </div>
+    </px-card-backlogs>
+    <px-card-backlogs id="4" header-text="Contractual Backlog Growth" style="margin-right: 513px;padding-bottom: 9px;padding-top: 48px;padding-left: 5px;padding-right: 4px;margin-top:-540px">
+  <!-- <px-chart type="histogram">
+    <px-chart-series-histogram id="Contractual Backlog Growth">
+      <iron-ajax
+        url="../sample-data/fan-vibration-cruise.json"
+        handle-as="json"></iron-ajax>
+    </px-chart-series-histogram>
+  </px-chart> -->
+<!-- <div ng-app="myapp">
+    <div ng-controller="myctrl">
+        <div class="row">
+            <highchart id="chart1" config="chartConfig" class="span10"></highchart>
+        </div>
+    </div>
+</div>   -->  
+<div id="captionTimeline"></div>
+<div id="timeline"></div>
+<!-- <div id="slider">
+</div> -->
+<!-- <input type="text" id="example_id" name="example_name" value="" /> -->
+<!--        <px-slider id="slider1"
+  value="0" 
+  min="0" 
+  max="2016">
+</px-slider> -->
+
+</px-card-backlogs>
+    <px-card-backlogs id="5" style="background-color:#ffbb66;margin-right: 0px;padding-bottom: 10px;padding-top: 13px;padding-left: 122px;padding-right: 3px;">
+ <label>Download Backlogs Report for Quarter</label><px-deck-selector decks='[{"name": "First Quarter", "url": "/deck1"},{"name": "Second Quarter", "url": "/deck2"},{"name": "Third Quarter", "url": "/deck3"}]'  selected-deck-url="{{url}}"></px-deck-selector>      
+    <label style="float: right;margin-top: -19px;margin-right: 477px;">for Year</label> <px-deck-selector1 decks='[{"name": "2016", "url": "/deck1"},{"name": "2015", "url": "/deck2"},{"name": "2014", "url": "/deck3"}]'  selected-deck-url="{{url}}"></px-deck-selector1>
+    <button style="float: right;margin-top: -25px;margin-right: 292px;font-family: GE Inspira;color: white;background-color: #005cb9;" class="btn btn--small btn--tertiary">Download</button></px-card-backlogs>
+
+
+ 
+ <script>
+    document.addEventListener('WebComponentsReady', function() {
+      var chart = document.querySelector('#selection-chart');
+      var label = document.querySelector('#selection-label');
+
+      chart.addEventListener('google-chart-render', function() {
+        chart.selection = [{row: 1, column: null}];
+        label.textContent = chart.selection[0].row;
+      });
+
+      document.addEventListener('google-chart-select', function(e) {
+        label.textContent =
+            chart.selection[0] ? chart.selection[0].row : 'None';
+      });
+
+    });
+ </script>
+ 
+ <script>
+ //Below code for stacked bar chart with Slider event
+ var timeline;
+ var dataSet;
+ var hasTimeline = false;
+
+ //Set up stack method
+ var stack = d3.layout.stack();
+
+ var parseDate = d3.time.format("%Y-%m-%d").parse;
+
+ var color = d3.scale.ordinal()
+     .range(["#059748", "#005cb9"]);
+
+ var timeLineMargin = {
+     top: 20,
+     right: 20,
+     bottom: 100,
+     left: 70
+ },
+ timeLineWidth = 450 - timeLineMargin.left - timeLineMargin.right,
+     timeLineHeight = 400 - timeLineMargin.top - timeLineMargin.bottom;
+
+ marginOverview = {
+     top: 340,
+     right: timeLineMargin.right,
+     bottom: 30,
+     left: timeLineMargin.left
+ },
+ heightOverview = 400 - marginOverview.top - marginOverview.bottom;
+
+ var legendWidth = 500,
+     legendHeight = 25;
+
+ var x;
+
+ var svg = d3.select("#timeline")
+     .append("svg") // the overall space
+ .attr("id", "timeline")
+     .attr("width", timeLineWidth + timeLineMargin.left + timeLineMargin.right)
+     .attr("height", "400");
+
+ var main = svg.append("g").append("g")
+     .attr("class", "main")
+     .attr("transform", "translate(" + timeLineMargin.left + "," + timeLineMargin.top + ")");
+
+
+
+         dataSet = [{ "Date": "2013-05","FSA":500,"OSA": 1424},
+                    {"Date": "2013-11","FSA":600,"OSA": 1662},
+                    {"Date": "2014-01","FSA":800,"OSA":1665},
+       			 {"Date": "2014-05","FSA":900,"OSA":1865},
+       			 {"Date": "2014-08","FSA":200,"OSA":1995},
+       			 {"Date": "2014-11","FSA":700,"OSA":5665},
+       			 { "Date": "2015-04","FSA":900,"OSA":1785},
+       			 {"Date": "2015-07","FSA":1000,"OSA":1365},
+       			 {"Date": "2015-09","FSA":100,"OSA":1665},
+       			 {"Date": "2016-01","FSA":200,"OSA":1665},
+       			{"Date": "2016-05","FSA":1000,"OSA":1665},
+       			{"Date": "2016-10","FSA":900,"OSA":2665},
+       			{"Date": "2016-11","FSA":900,"OSA":165},
+       			{"Date": "2016-12","FSA":2200,"OSA":665}
+       			 ];
+
+
+     // mathematical scales for the x and y axes
+     x = d3.time.scale()
+         .range([0, timeLineWidth]);
+     var y = d3.scale.linear()
+         .range([timeLineHeight, 0]);
+     var xOverview = d3.time.scale()
+         .range([0, timeLineWidth]);
+     var yOverview = d3.scale.linear()
+         .range([heightOverview, 0]);
+
+     // rendering for the x and y axes
+     var xAxis = d3.svg.axis()
+         .scale(x)
+         .orient("bottom");
+     var yAxis = d3.svg.axis()
+         .scale(y)
+         .orient("left");
+     var xAxisOverview = d3.svg.axis()
+         .scale(xOverview)
+         .orient("bottom")
+         .ticks(d3.time.years, 1);
+
+     var overview = svg.append("g")
+         .attr("class", "overview")
+         .attr("transform", "translate(" + marginOverview.left + "," + marginOverview.top + ")");
+
+     // legenda
+     var captionTimeline = d3.select("#captionTimeline").append("svg")
+         .attr("width", legendWidth)
+         .attr("height", legendHeight);
+
+     // brush tool to let us zoom and pan using the overview chart
+     brush = d3.svg.brush()
+         .x(xOverview)
+         .on("brush", brushed);
+
+     color.domain(d3.keys(dataSet[0]).filter(function (key) {
+         return key !== "Date";
+     }));
+
+     dataSet.forEach(function (d) {
+
+         var y0 = 0;
+         d.counts = color.domain().map(function (name) {
+             return {
+                 date: parseDate(d.Date),
+                 name: name,
+                 y0: y0,
+                 y1: y0 += +d[name]
+             };
+         });
+         d.total = d.counts[d.counts.length - 1].y1;
+     });
+
+     // Work with data...
+     data = dataSet;
+
+     // data ranges for the x and y axes
+     x.domain([new Date(data[0].Date), d3.time.day.offset(new Date(data[data.length - 1].Date), 8)]);
+
+     y.domain([0, d3.max(data, function (d) {
+         return d.total;
+     })]);
+     xOverview.domain(x.domain());
+     yOverview.domain(y.domain());
+
+     // data range for the bar colours
+     // (essentially maps attribute names to colour values)
+     color.domain(d3.keys(data[0].ages));
+
+     // draw the axes now that they are fully set up
+     main.append("g")
+         .transition()
+         .delay(150)
+         .attr("class", "x axis")
+         .attr("transform", "translate(18," + timeLineHeight + ")")
+         .call(xAxis)
+         .selectAll("text")
+         .style("text-anchor", "end")
+         .attr("dx", "-.8em")
+         .attr("dy", ".15em")
+         .attr("transform", function (d) {
+         return "rotate(-65)";
+     });
+
+     main.append("g")
+         .transition()
+         .delay(150)
+         .attr("class", "y axis")
+         .call(yAxis);
+
+     overview.append("g")
+         .transition()
+         .delay(150)
+         .attr("class", "x axis")
+         .attr("transform", "translate(0," + heightOverview + ")")
+         .call(xAxisOverview);
+
+     // draw the bars
+     main.append("g")
+         .attr("class", "bars")
+     // a group for each stack of bars, positioned in the correct x position
+     .selectAll(".bar.stack")
+         .data(data)
+         .enter().append("g")
+         .attr('clip-path', 'url(#clip)')
+         .attr("class", "bar stack")
+         .attr("transform", function (d) {
+         return "translate(" + x(new Date(d.Date)) + ",0)";
+     })
+     // a bar for each value in the stack, positioned in the correct y positions
+     .selectAll("rect")
+         .data(function (d) {
+         return d.counts;
+     })
+         .enter().append("rect")
+         .attr("class", "bar")
+         .attr("width", 22)
+         .attr("y", function (d) {
+         return y(d.y1);
+     })
+         .attr("height", function (d) {
+         return y(d.y0) - y(d.y1);
+     })
+         .style("fill", function (d) {
+         return color(d.name);
+     });
+
+     overview.append("g")
+         .attr("class", "bars")
+         .selectAll(".bar")
+         .data(data)
+         .enter().append("rect")
+         .transition()
+         .delay(750)
+
+         .attr("class", "bar")
+         .attr("x", function (d) {
+         return xOverview(new Date(d.Date)) - 3;
+     })
+         .attr("width", 6)
+         .attr("y", function (d) {
+         return yOverview(d.total);
+     })
+         .attr("height", function (d) {
+         return heightOverview - yOverview(d.total);
+     });
+     
+     overview.append("text")
+ 	.attr("transform","rotate(-90)")
+ 	.attr("y", -66)
+ 	.attr("x", 150)
+ 	.attr("dy","1em")
+ 	.text("BL Rev (millions)");
+
+     // add the brush target area on the overview chart
+     overview.append("g")
+         .transition()
+         .delay(150)
+         .attr("class", "x brush")
+         .call(brush)
+         .selectAll("rect")
+     // -6 is magic number to offset positions for styling/interaction to feel right
+     .attr("y", -6)
+     // need to manually set the height because the brush has
+     // no y scale, i.e. we should see the extent being marked
+     // over the full height of the overview chart
+     .attr("height", heightOverview + 7); // +7 is magic number for styling
+
+     //Legenda
+     if (!hasTimeline) {
+         var legend = captionTimeline.selectAll(".legend")
+             .data(color.domain().slice().reverse())
+             .enter().append("g")
+             .attr("height", legendHeight)
+             .attr("width", legendWidth)
+             .attr("class", "legend")
+             .attr('transform', 'translate(0,5)');
+
+         legend.append("rect")
+             .attr("x", function (d, i) {
+             return i * 70 + 80;
+         })
+             .attr("y", 0)
+             .attr("width", 18)
+             .attr("height", 18)
+             .style("fill", color);
+
+         legend.append("text")
+             .attr("x", function (d, i) {
+             return i * 70 + 137;
+         })
+             .attr("y", 10)
+             .style("text-anchor", "end")
+             .text(function (d) {
+             return d;
+         });
+
+         hasTimeline = true;
+     }
+
+     // zooming/panning behaviour for overview chart
+     function brushed() {
+         // update the main chart's x axis data range
+         x.domain(brush.empty() ? xOverview.domain() : brush.extent());
+         // redraw the bars on the main chart
+         main.selectAll(".bar.stack")
+             .attr("transform", function (d) {
+             return "translate(" + x(new Date(d.Date)) + ",0)";
+         });
+         //.attr("width", timeLineWidth + timeLineMargin.left + timeLineMargin.right);
+         // redraw the x axis of the main chart
+         main.select(".x.axis").call(xAxis).selectAll("text")
+             .style("text-anchor", "end")
+             .attr("dx", "-.8em")
+             .attr("dy", ".15em")
+             .attr("transform", function (d) {
+             return "rotate(-65)";
+         });
+     }
+
+
+
+    </script>
+ </body>
+ <style>
+/* body {
+  font: 10px sans-serif;
+} */
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.bar {
+  fill: steelblue;
+}
+.x.axis path {
+}
+
+#container svg{
+width: 419px !important;
+}
+.grid path {
+      stroke-width: 0;
+}
+
+.ui-slider {
+    height: 10px;
+    width: 360px;
+    margin-top: 20px;
+    margin-left: 120px; 
+
+}
+#sliderContainer{
+margin-right:-20px;
+margin-left: -12px;
+}
+#inputStart{
+visibility: hidden;
+}
+   .axis text {
+       font-family: sans-serif;
+       font-size: 11px;
+   }
+   .dot {
+       stroke: #000;
+   }
+   .brush .extent {
+       stroke: #fff;
+       fill-opacity: .125;
+       shape-rendering: crispEdges;
+   }
+   .legend {
+       padding: 5px;
+       font: 10px sans-serif;
+       background: yellow;
+       box-shadow: 2px 2px 1px #888;
+   }
+   .legend rect {
+       fill:white;
+       stroke:black;
+       opacity:0.9;
+   }
+</style>
+
+<style is="custom-style">
+  paper-dropdown-menu.custom {
+    --paper-input-container-label: {
+      color: white;
+      background-color: var(--paper-pink-500);
+      font-style: italic;
+      text-align: center;
+      font-weight: bold;
+    };
+    --paper-input-container-input: {
+      color: var(--paper-indigo-500);
+      font-style: normal;
+      font-family: serif;
+      text-transform: uppercase;
+    }
+    /* no underline */
+    --paper-input-container-underline: {
+      display: none;
+    };
+  }
+</style>

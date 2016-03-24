@@ -1,0 +1,7 @@
+---
+applications:
+  - name: predix-seed
+    buildpack: predix_openresty_buildpack
+    path: dist
+    memory: 64M
+    stack: cflinuxfs2

@@ -1,0 +1,9 @@
+[
+{
+        "uri": "image1",
+        "classification": "image1",
+        "description": "Image for NAM",
+        "assetId": "../images/cmr.png",
+        "parent": null
+    }
+]
