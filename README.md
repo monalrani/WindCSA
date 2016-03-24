@@ -1,8 +1,3 @@
-#Deprecated
-Moved to https://github.com/PredixDev/predix-seed
-
-*If you don’t already have access to the Predix GitHub repo, please write to predixgithubaccount@ge.com with the subject "GitHub access" and provide your GitHub account name. We’ll confirm the info and provide access soon.*
-
 #Predix Experience 2.0 Seed
 Dashboard Seed is an application that uses <a href="https://github.build.ge.com/pages/PXc/pxc-demos/" target="_blank">Px Web Components</a> and <a href="https://github.build.ge.com/pages/PXd/px-library-design/" target="_blank">Px UI Elements</a> inside an Angular application.  See the running <a href="http://predix-seed.grc-apps.svc.ice.ge.com/" target="_blank">demo</a>.
 
