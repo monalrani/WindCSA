@@ -1,0 +1,141 @@
+
+<link rel="import" href="../polymer/polymer.html"/>
+<link rel="import" href="px-card-header.html"/>
+
+
+<dom-module id="px-card-backlogs">
+  <link rel="import" type="css" href="css/px-card.css"/>
+  <template>
+    <template is="dom-if" if="{{headerText}}">
+      <px-card-header icon="{{icon}}" header-text="{{headerText}}"></px-card-header>
+    </template>
+    <content></content>
+  </template>
+</dom-module>
+
+<script type="text/javascript">
+
+    (function () {
+        window.px = window.px || {};
+
+        window.px.card = {
+            properties: {
+                // title of your card
+                title: String,
+                 // context object being pass into the card from deck/dashboard
+                context: {
+                    type: Object,
+                    observer: '_contextChanged'
+                },
+                /**
+                 * deck state object being pass from the deck, deck state object is a shared object between all cards within a deck
+                 */
+                deckState: {
+                    type: Object,
+                    observer: '_deckStateChanged'
+                }
+            },
+            /**
+             * context change handler to be called when context is changed. This private method will call public contextChanged method which will be implemented by developer
+             */
+            _contextChanged: function (newContext, oldContext) {
+                if (this.contextChanged && typeof this.contextChanged === 'function') {
+                    this.contextChanged(newContext, oldContext);
+                }
+            },
+            /**
+             * deck state change handler to be called when deck state is changed in deck by other cards. This private method will call public deckStateChanged method which will be implemented by developer
+             */
+            _deckStateChanged: function (newDealerState, oldDealerState) {
+                this.fromDeck = true;
+                if (this.deckStateChanged && typeof this.deckStateChanged === 'function') {
+                    this.deckStateChanged(newDealerState, oldDealerState);
+                }
+                this.fromDeck = false;
+            },
+            _refresh: function () {
+                if (this.refresh && typeof this.refresh === 'function') {
+                    this.refresh();
+                }
+            },
+            /**
+             * web component ready callback to be called by the browser when the web component is ready to listen to handle property changes
+             */
+            ready: function () {
+                this.addEventListener('px-card-refresh', this._refresh);
+                //console.log('----------> card-ready!!');
+
+            },
+            attached: function () {
+                //console.log('----> card-attached!!');
+                this.fire('px-card-ready');
+                if (!this.id) {
+                    throw 'Card ' + this.tagName + ' cannot be created without an id!';
+                }
+            },
+            /**
+             * init method to be called when card is ready
+             */
+            init: function () {
+                // this default init function is needed in case they don't implement init
+                // this is the 'instantiate' requirement
+                //console.log('px-card init is called');
+            },
+            /**
+             * call this method with an object that the card wants to share with other cards wthin the deck
+             */
+            updateDeck: function (value) {
+                if (!this.fromDeck) {
+                    if (this._deck && this._deck.updateState) {
+                        this._deck.updateState(this.id, value);
+                    }
+                    else {
+                        //console.log('no updatestate');
+                    }
+                }
+                else {
+                    //console.log('KILL this update because from deck');
+                }
+            },
+            /**
+             * this method can be call to show a card from dom
+             */
+            showCard: function () {
+                this.hidden = false;
+                this.querySelector('px-card-backlogs').hidden = false;
+            },
+            /**
+             * this method can be call to hide a card from dom
+             */
+            hideCard: function () {
+                this.hidden = true;
+                this.querySelector('px-card-backlogs').hidden = true;
+            },
+            /**
+             * getData from web resources with url
+             */
+            getData: function () {
+                return window.px.dealer.getData.apply(window.px.dealer, arguments);
+            }
+        };
+    })();
+
+    Polymer({
+        is: 'px-card-backlogs',
+        properties: {
+            /**
+             * px-card header text
+             */
+            headerText: {
+                type: String
+            },
+            /**
+             * px-card icon
+             */
+            icon: {
+                type: String
+            }
+        }
+    });
+
+</script>

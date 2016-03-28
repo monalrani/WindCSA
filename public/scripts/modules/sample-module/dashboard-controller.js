@@ -15,7 +15,6 @@ define(['angular', './sample-module'], function (angular, controllers) {
 
         // callback for when the Open button is clicked
         $scope.openContext = function (contextDetails) {
-        	//  debugger;
             // need to clean up the context details so it doesn't have the infinite parent/children cycle,
             // which causes problems later (can't interpolate: {{context}} TypeError: Converting circular structure to JSON)
             var newContext = angular.copy(contextDetails);
@@ -24,10 +23,9 @@ define(['angular', './sample-module'], function (angular, controllers) {
 
             $scope.context = newContext;
             var selectedItemIdVal = newContext.id;
-            console.log(selectedItemIdVal);
             document.getElementById("myValueAttr").value = selectedItemIdVal;
-            console.log(document.getElementById("myValueAttr").value);
             
+            //Code below When item is selected in context browser
             	    if (selectedItemIdVal == "parent"){
             	    	var json = 
               	    	  [{"lat":33.5995, "lng":-84.5485, "title":'Atlanta', "CMR_Flag":'C',"ContractName":'Contract1',"P6Score":'20.5%'},
@@ -88,11 +86,9 @@ define(['angular', './sample-module'], function (angular, controllers) {
                   	  marker.setAttribute('icon','http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
                     }
                     
-                   //marker.setAttribute('info','<p id="hook">Hello World!</p>');
                     marker.innerHTML = '<div id="iw-container">' +
                     '<div class="iw-content">' +
                      '<div class="iw-subTitle"><i class="fa fa-info-circle" style="padding-right:20px"></i>'+data.title+'</div>' +
-                      /*'<img src="images/vistalegre.jpg" alt="Porcelain Factory of Vista Alegre" height="115" width="83">' + */
                      '<table class="table2"><tr><td style="color: #005cb9;font-size: 17px;">Contract Name</td>'+
                      '<td style="color: #005cb9;font-size: 17px;padding-left: 32px;">P6 Score</td></tr><tr><td><a style="color:#000000;text-decoration: blink !important;" href="#">'+data.ContractName+'</a>'+
                      '</td><td style="color:#000000;padding-left: 57px;">'+data.P6Score+'</td></tr><tr><td><a style="color:#000000;text-decoration: blink !important;" href="#">Contract8</a></td><td style="color:#000000;padding-left: 57px;">'+data.P6Score+'</td></tr></table>'+
@@ -149,7 +145,6 @@ define(['angular', './sample-module'], function (angular, controllers) {
          		            self.json1 = json1;
          		           var myInput = document.getElementById('dataTable');
          		          myInput.setAttribute('style', 'padding-bottom: 47px;');
-         		          console.log(myInput.getAttribute('style'));
          		            }); 
          	    }
          	    
@@ -158,16 +153,13 @@ define(['angular', './sample-module'], function (angular, controllers) {
             //Tag string can be classification from contextDetails
             PredixViewService.getDecksByTags(newContext.classification) // gets all decks for this context
                 .then(function (decks) {
-                	console.log(decks);
                     $scope.decks = [];
 
                     if(decks && decks.length > 0) {
                         decks.forEach(function (deck) {
                             $scope.decks.push({name: deck.title, url: PredixViewService.getUrlForFetchingCardsForDeckId(deck.id)});
-                            console.log($scope.decks)
                         });
                         $scope.selectedDeckUrl = $scope.decks[0].url;
-                        console.log(selectedDeckUrl);
                     }
                 });
         };
@@ -182,67 +174,4 @@ define(['angular', './sample-module'], function (angular, controllers) {
         };
     }]);
     
-	/*$(function () {
-	    $('#container').highcharts({
-	        chart: {
-	            type: 'column'
-	        },
-	        title: {
-	            text: 'Stacked column chart'
-	        },
-	        xAxis: {
-	            categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
-	        },
-	        yAxis: {
-	            min: 0,
-	            title: {
-	                text: 'Total fruit consumption'
-	            },
-	            stackLabels: {
-	                enabled: true,
-	                style: {
-	                    fontWeight: 'bold',
-	                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
-	                }
-	            }
-	        },
-	        legend: {
-	            align: 'right',
-	            x: -30,
-	            verticalAlign: 'top',
-	            y: 25,
-	            floating: true,
-	            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
-	            borderColor: '#CCC',
-	            borderWidth: 1,
-	            shadow: false
-	        },
-	        tooltip: {
-	            headerFormat: '<b>{point.x}</b><br/>',
-	            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
-	        },
-	        plotOptions: {
-	            column: {
-	                stacking: 'normal',
-	                dataLabels: {
-	                    enabled: true,
-	                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
-	                    style: {
-	                        textShadow: '0 0 3px black'
-	                    }
-	                }
-	            }
-	        },
-	        series: [{
-	            name: 'John',
-	            data: [5, 3, 4, 7, 2]
-	        }, {
-	            name: 'Jane',
-	            data: [2, 2, 3, 2, 1]
-	        }, {
-	            name: 'Joe',
-	            data: [3, 4, 4, 2, 5]
-	        }]
-	    });
-	});*/
 });

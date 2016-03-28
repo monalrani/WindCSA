@@ -37,12 +37,12 @@ define(['angular', 'angular-ui-router'], function(angular) {
             })
             .state('backLog', {
                 url: '/backLog',
-                templateUrl: 'views/blank-page.html',
+                templateUrl: 'views/backlog.html',
                 //controller: 'DashboardsCtrl'
             })
              .state('contract', {
                 url: '/contract',
-                templateUrl: 'views/grid.html'
+                templateUrl: 'views/contract.html'
             })
             /*
              .state('help', {

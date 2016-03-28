@@ -1,0 +1,358 @@
+<link rel="import" href="../polymer/polymer.html"/>
+
+<style>
+  google-map {
+    height: 440px;
+  }
+  
+  #mydiv {
+      width: 200px;
+      height:200px;
+    padding: 20px;
+
+}
+.infowindow
+    {
+        font-size:13px;
+        width: 250px;
+        color: blue;
+        font-family:Roboto, Arial, sans-serif;
+    }
+   .gm-style-iw {
+	width: 350px !important;
+	position: absolute !important;
+	top: 0px !important;
+	left: 15px !important;
+	color: #285EA5 !important;
+	/* background-color: #fff;
+	box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+	border: 1px solid rgba(72, 181, 233, 0.6);
+	border-radius: 2px 2px 10px 10px; */
+}
+#iw-container {
+	margin-bottom: 0px;
+}
+#iw-container .iw-title {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 22px;
+	font-weight: 400;
+	padding: 10px;
+	background-color: #48b5e9;
+	color: white;
+	margin: 0;
+	border-radius: 2px 2px 0 0;
+}
+#iw-container .iw-content {
+	font-size: 13px;
+	line-height: 18px;
+	font-weight: 400;
+	margin-right: 1px;
+	padding: 15px 5px 0px 15px;
+	max-height: 140px;
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+.iw-content img {
+	float: right;
+	margin: 0 5px 5px 10px;	
+}
+.iw-subTitle {
+	font-size: 19px;
+	font-family:GE Inspira;
+	font-weight: 700;
+	padding: 5px 10px;
+	color: #FFFFFF;
+	background: #005cb9 !important;
+}
+.iw-bottom-gradient {
+	position: absolute;
+	width: 326px;
+	height: 25px;
+	bottom: 10px;
+	right: 18px;
+	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+}
+px-card{
+margin-bottom: -29.666667rem !important;
+padding: 1px 1.3333333333rem 3rem;
+}
+    iron-icon {
+    width: 23px !important;
+  }
+  /* .breadcrumbs.px-context-browser{
+  height: 0rem !important;
+  } */
+
+  /* .flex.px-context-browser{
+  display: inline !important;
+  } */
+  .profile-name{color:#1B5CF5;font-size:20px;font-weight:bold;font-family:GE Inspira",Verdana,Geneva,sans-serif;
+  }
+    .caps.u-mt0.style-scope.px-card-header{
+    height: 40px !important;
+    }
+    h3#headertext{
+    margin-top: -12px !important;
+    }
+    #back{
+    height: 45px;
+    }
+   /*  #ruler.px-context-browser{
+        width: 63.5%;
+        height:105%;
+    } */
+          .tab-page {
+        margin: 5px;
+      }
+      
+      iron-icon{
+      width: 19px !important;
+      }
+      .resultTable.u-p-.px-data-table{
+		  padding: -2.333333rem !important;
+	  }
+	  td.aha-table .viewing.aha-table, .td.aha-table .viewing.aha-table{
+	  min-height: 0rem !important;
+	  }
+	  .btn-group.px-data-table
+	  {display:none;}
+	  .scroll-body.aha-table{
+	  overflow-x:hidden;
+	  }
+	  .pagination.aha-table{
+	  display:none !important;
+	  }
+	  .table.aha-table th.aha-table, .table.aha-table .th.aha-table, .table.aha-table td.aha-table, .table.aha-table .td.aha-table{
+	  border:0px solid #b1b1bc;
+	  }
+	  .table--small.aha-table th.aha-table, .table--small.aha-table .th.aha-table, .table--small.aha-table td.aha-table, .table--small.aha-table .td.aha-table
+	  {padding:0.640000rem !important;
+	  }
+	  .column-head.aha-table{
+	  font-weight: 900 !important;
+	  }
+	  i.u-ml-.sorting.fa.fa-angle-down.style-scope.aha-table{
+	  display:none;}
+	  .column-head.style-scope.aha-table{
+	  color:#005cb9;
+	  }
+	  
+	  /* #map > div > div > div + div +div:nth-child(4) > div {
+	  	background: red;
+	  } */
+	  
+	 .gm-style > div > div + div > div:nth-child(4) > div  {
+	  	/* background: rgba(255, 0, 0, 0.5); */
+	  	background: rgba(72, 181, 233, 0.6) !important;
+	  	border-radius: 10px !important;
+	  	box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+	  }
+	  .gm-style > div > div + div > div:nth-child(4) > div > div > div {
+	  	/* background: rgba(255, 255, 0, 0.5) !important; */
+	  	
+	  	border-radius: 10px !important;
+	  }
+	  .text-style1 {
+	  	margin-bottom: 0 !important;
+	  	    padding-left: 208px !important;
+	  	    padding-bottom: 24px !important;
+	  	
+	  }
+	  table {
+	    border-collapse: collapse;
+    padding-left: 12px;
+    margin-left: 5px;
+    margin-top: 17px;
+
+	}
+	
+	 .table1 th
+	{
+	border: 0px solid black;
+    padding-left: 10px;
+    padding-right: 29px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(153, 201, 224, 0.62) !important;
+
+	}
+	.table1 td
+	{
+	border: 0px solid black;
+    padding-left: 4px;
+    padding-right: 23px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: #005cb9 !important;
+
+	}
+	.table2 th{
+	border: 0px solid black;
+    padding-left: 10px;
+    padding-right: 29px;
+    padding-top: 10px;
+    padding-bottom: -4px;
+    background-color: white !important;
+    font-family:GE Inspira;font-size:19px;
+	}
+	.table2 td
+	{
+	border: 0px solid black;
+    padding-left: 10px;
+    padding-right: 29px;
+    padding-top: 10px;
+    padding-bottom: -4px;
+    background-color: white !important;
+    font-family:GE Inspira;font-size:14px;
+	}
+	
+	#aha_table_main{
+	margin-top: 15px !important; 
+	}
+.u-ml-.aha-table {
+display: none !important;
+}
+</style>  
+
+<dom-module id="px-card-dashboard">
+  <template>
+ <px-card id="1" style="color: blue;margin-right: 347px;padding-bottom: 3px;padding-top: 2px;padding-left: 3px;padding-right: 3px;min-width:700px;max-width:500px;">
+       <google-map id="map1" latitude="29.7267" longitude="-0.84265" zoom="5" fit-to-markers>
+ </google-map>      
+    </px-card>
+    
+ <px-card id="2" style="background-color:#ffbb66;position:absolute;margin-top:449px;padding-right:49px;padding-bottom: 8px;padding-top: 4px;padding-left: 1px;margin-left: 0px;margin-right: 4px;">
+<label><marquee style="offset: 0;margin-left: 7px;margin-right: 48px;padding-left: 473px;padding-right: 203px;"behavior="alternate" scrolldelay="10" onmouseover="stop();"  onmouseout="start();">
+ <img src="..\..\images\cmr.png" height="12px"style="margin-left:0px"; > &nbsp <font family: "GE Inspira"; size="3px" color="#b61225"><i> Upcoming CMRs are for Sites: Atlanta, Basildon</i> </font>
+ &nbsp&nbsp <img src="..\..\images\P6.jpg" height="12px"style="margin-left:0px"; > <font family: "GE Inspira"; size="3px" color="#059748"> <i>Fleet P6 Score $95.6</i></font> </marquee></label>
+ </px-card>
+ 
+    <px-card id="3" style="font-family:GE Inspira;font-size:15px;margin-left: 705px;margin-top: 0px;max-width:355px;padding-bottom: 3px;min-height: 445px;padding-top: 1px;width: 266px;height: 393px;">
+    <table class="table1">
+    <tr>
+    <td style="font-family:GE Inspira;font-size:19px;color: white;width: 87px">P6 Score :</td>
+    <td align="right" style="font-family:GE Inspira;font-size:16px;color: white;">&nbsp&nbsp$567876</td>
+    </tr>
+    </table>
+<!--     <br><center><label style="font-family:GE Inspira;color:#8669FF;font-weight:bold;margin-left: -22px">P6 Score: </label>&nbsp&nbsp&nbsp96.5</center> 
+ -->    <br><label style="font-family:GE Inspira;color:#005cb9;font-weight:bold;margin-left: 40px;font-size:20px;">Upcoming CMRs</label>
+  <px-data-table id="resultTable" columns table-data="{{json1}}">
+<px-data-table-column name="Site"
+type="html"
+label="Site"
+sortable
+required
+default="">
+</px-data-table-column>
+
+<px-data-table-column name="Date"
+type="html"
+label="Date"
+sortable
+required
+default=""
+>
+</px-data-table-column>
+</px-data-table>  
+<input id="myValueAttr" type="hidden" name="myValueAttr" value="${selectedItemIdVal}" />
+    </px-card>
+  </template>
+</dom-module>
+
+
+
+<script>
+
+
+Polymer({
+    is: 'px-card-dashboard',
+    behaviors: [px.card],
+    properties: {
+        selected: {
+        type: String,
+        reflect: true
+          },
+          sortable: {
+				type: Boolean,
+				value: false
+			}
+        },
+        ready: function() {
+      
+            this.cbrResultsService();
+          },
+          
+          cbrResultsService: function() {
+        	  var resp = this;
+  			var serviceUrl = "";
+  			var json1 = "";
+  			readTextFile("/sample-data/test.json", function(text){
+  			    json1 = JSON.parse(text);
+  			});
+
+  			             var self = this;
+  			            this.getData(serviceUrl).then(function(data) {
+  			 
+  			            self.data= data.response;
+  			            //binding json data to CMR table
+  			            self.json1 = json1;
+  			            
+  		  	    	var json = 
+  		  	    	  [{"lat":33.5995, "lng":-84.5485, "title":'Atlanta', "CMR_Flag":'C',"ContractName":'Contract1',"P6Score":'20.5%'},
+  		  	    	  {"lat":51.5761, "lng":0.4887, "title":'Basildon', "CMR_Flag":'P',"ContractName":'Contract2',"P6Score":'90.6%'},
+  		  	    	  {"lat":45.5679, "lng":-73.2039, "title":'Beloeil', "CMR_Flag":'C',"ContractName":'Contract3',"P6Score":'12%'},
+  		  	    	  {"lat":17.5931, "lng":78.4047, "title":'BHEL', "CMR_Flag":'P',"ContractName":'Contract4',"P6Score":'45%'},
+  		  	    	  {"lat":42.9963, "lng":-78.7954, "title":'Buffalo',"CMR_Flag":'P',"ContractName":'Contract5',"P6Score":'89%'},
+  		  	    	  {"lat":43.3751, "lng":-79.7756, "title":'Burlington', "CMR_Flag":'C',"ContractName":'Contract6',"P6Score":'59%'}
+  		  	    	  ];
+  		  	  
+  		  	    	//creating sites as marker on google-map
+  		          for (var i = 0, length = json.length; i < length; i++) {
+  		        	  var gmap = document.querySelector('google-map');
+  		        	
+  		        	 var gmap1 = document.querySelector('#map');
+  		        	gmap1.setAttribute('style', 'overflow: hidden; transform: translateZ(10px) translateZ(10px) translateZ(0px); background-color: rgb(229, 227, 223);');
+  		        	gmap.resize();
+  		        	  var data = json[i];
+  		        	  var marker = document.createElement('google-map-marker');
+  		          marker.setAttribute('latitude', data.lat);
+  		          marker.setAttribute('longitude', data.lng);
+  		          marker.setAttribute('title', data.title);
+  		          if(data.CMR_Flag == "C"){
+  		        	marker.setAttribute('icon','http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+  		          }else {
+  		        	  marker.setAttribute('icon','http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
+  		          }
+  		          
+  		          marker.innerHTML = '<div id="iw-container">' +
+  		          '<div class="iw-content">' +
+  		           '<div class="iw-subTitle"><i class="fa fa-info-circle" style="padding-right:20px"></i>'+data.title+'</div>' +
+  		           '<table class="table2"><tr><td style="color: #005cb9;font-size: 17px;">Contract Name</td>'+
+  		           '<td style="color: #005cb9;font-size: 17px;padding-left: 32px;">P6 Score</td></tr><tr><td><a style="color:#000000;text-decoration: blink !important;" href="#">'+data.ContractName+'</a>'+
+  		           '</td><td style="color:#000000;padding-left: 57px;">'+data.P6Score+'</td></tr><tr><td><a style="color:#000000;text-decoration: blink !important;" href="#">Contract8</a></td><td style="color:#000000;padding-left: 57px;">'+data.P6Score+'</td></tr></table>'+
+  		          '</div>' +
+  		        '</div>';  
+  		        Polymer.dom(gmap).appendChild(marker);
+  		          }
+  		    
+  				}); 
+            }
+       	      });
+
+function readTextFile(file, callback) {
+	    var rawFile = new XMLHttpRequest();
+	    rawFile.overrideMimeType("application/json");
+	    rawFile.open("GET", file, true);
+	    rawFile.onreadystatechange = function() {
+	        if (rawFile.readyState === 4 && rawFile.status == "200") {
+	            callback(rawFile.responseText);
+	        }
+	    }
+	    rawFile.send(null);
+	};
+
+      	
+ </script>

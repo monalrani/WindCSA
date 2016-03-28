@@ -70,6 +70,81 @@ google-chart {
     margin-top:-19px;
     float: right;
 }
+  paper-dropdown-menu.custom {
+    --paper-input-container-label: {
+      color: white;
+      background-color: var(--paper-pink-500);
+      font-style: italic;
+      text-align: center;
+      font-weight: bold;
+    };
+    --paper-input-container-input: {
+      color: var(--paper-indigo-500);
+      font-style: normal;
+      font-family: serif;
+      text-transform: uppercase;
+    }
+    /* no underline */
+    --paper-input-container-underline: {
+      display: none;
+    };
+  }
+  .axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.bar {
+  fill: steelblue;
+}
+.x.axis path {
+}
+
+#container svg{
+width: 419px !important;
+}
+.grid path {
+      stroke-width: 0;
+}
+
+.ui-slider {
+    height: 10px;
+    width: 360px;
+    margin-top: 20px;
+    margin-left: 120px; 
+
+}
+#sliderContainer{
+margin-right:-20px;
+margin-left: -12px;
+}
+#inputStart{
+visibility: hidden;
+}
+   .axis text {
+       font-family: sans-serif;
+       font-size: 11px;
+   }
+   .dot {
+       stroke: #000;
+   }
+   .brush .extent {
+       stroke: #fff;
+       fill-opacity: .125;
+       shape-rendering: crispEdges;
+   }
+   .legend {
+       padding: 5px;
+       font: 10px sans-serif;
+       background: yellow;
+       box-shadow: 2px 2px 1px #888;
+   }
+   .legend rect {
+       fill:white;
+       stroke:black;
+       opacity:0.9;
+   }
 </style>
 
 <px-card-backlogs id="1" style="margin-right: 492px;padding-bottom: 18px;padding-top: 11px;padding-left: 3px;padding-right: 3px;background-color: #005cb9;color: white;">
@@ -159,30 +234,9 @@ google-chart {
   </div>
     </px-card-backlogs>
     <px-card-backlogs id="4" header-text="Contractual Backlog Growth" style="margin-right: 513px;padding-bottom: 9px;padding-top: 48px;padding-left: 5px;padding-right: 4px;margin-top:-540px">
-  <!-- <px-chart type="histogram">
-    <px-chart-series-histogram id="Contractual Backlog Growth">
-      <iron-ajax
-        url="../sample-data/fan-vibration-cruise.json"
-        handle-as="json"></iron-ajax>
-    </px-chart-series-histogram>
-  </px-chart> -->
-<!-- <div ng-app="myapp">
-    <div ng-controller="myctrl">
-        <div class="row">
-            <highchart id="chart1" config="chartConfig" class="span10"></highchart>
-        </div>
-    </div>
-</div>   -->  
+ 
 <div id="captionTimeline"></div>
 <div id="timeline"></div>
-<!-- <div id="slider">
-</div> -->
-<!-- <input type="text" id="example_id" name="example_name" value="" /> -->
-<!--        <px-slider id="slider1"
-  value="0" 
-  min="0" 
-  max="2016">
-</px-slider> -->
 
 </px-card-backlogs>
     <px-card-backlogs id="5" style="background-color:#ffbb66;margin-right: 0px;padding-bottom: 10px;padding-top: 13px;padding-left: 122px;padding-right: 3px;">
@@ -499,87 +553,3 @@ google-chart {
 
 
     </script>
- </body>
- <style>
-/* body {
-  font: 10px sans-serif;
-} */
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-.bar {
-  fill: steelblue;
-}
-.x.axis path {
-}
-
-#container svg{
-width: 419px !important;
-}
-.grid path {
-      stroke-width: 0;
-}
-
-.ui-slider {
-    height: 10px;
-    width: 360px;
-    margin-top: 20px;
-    margin-left: 120px; 
-
-}
-#sliderContainer{
-margin-right:-20px;
-margin-left: -12px;
-}
-#inputStart{
-visibility: hidden;
-}
-   .axis text {
-       font-family: sans-serif;
-       font-size: 11px;
-   }
-   .dot {
-       stroke: #000;
-   }
-   .brush .extent {
-       stroke: #fff;
-       fill-opacity: .125;
-       shape-rendering: crispEdges;
-   }
-   .legend {
-       padding: 5px;
-       font: 10px sans-serif;
-       background: yellow;
-       box-shadow: 2px 2px 1px #888;
-   }
-   .legend rect {
-       fill:white;
-       stroke:black;
-       opacity:0.9;
-   }
-</style>
-
-<style is="custom-style">
-  paper-dropdown-menu.custom {
-    --paper-input-container-label: {
-      color: white;
-      background-color: var(--paper-pink-500);
-      font-style: italic;
-      text-align: center;
-      font-weight: bold;
-    };
-    --paper-input-container-input: {
-      color: var(--paper-indigo-500);
-      font-style: normal;
-      font-family: serif;
-      text-transform: uppercase;
-    }
-    /* no underline */
-    --paper-input-container-underline: {
-      display: none;
-    };
-  }
-</style>
